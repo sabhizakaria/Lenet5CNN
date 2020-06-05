@@ -64,7 +64,7 @@ void avg_pool_2(int input[outputH_2c][outputW_2c],int output_P[nb_filter_pool_1]
 /** 3rd convolution layer **/ 
 void conv1_3(int input [outputH_2p][outputW_2p], int kernel [nb_filter_conv_2][kernel_H][kernel_W], int output [nb_filter_conv_3][output_3c][output_3c]);
 /** fully connected layer **/
-void fully_connected(int output [output_3c][output_3c][output_3c]);
+void fully_C(int output [output_3c][output_3c][output_3c]);
 
 
 
