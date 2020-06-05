@@ -3,16 +3,16 @@
 #define LENET5_H_
 
 /*** number of filters   ***/
-#define nb_filter_conv_1 1
-#define nb_filter_pool_1 1
+#define nb_filter_conv_1 4
+#define nb_filter_pool_1 4
 #define nb_filter_conv_2 16
 #define nb_filter_pool_2 16
 /*** dimension of image input   ***/
-#define input_H 8
-#define input_W 8
+#define input_H 32
+#define input_W 32
 /*** dimension of filters (convolution)   ***/
-#define kernel_H 3
-#define kernel_W 3
+#define kernel_H 5
+#define kernel_W 5
 /*** dimension of filters (pooling)   ***/
 #define kernel_pH 2
 #define kernel_pW 2
