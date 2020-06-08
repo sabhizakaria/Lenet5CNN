@@ -10,4 +10,4 @@ prog.o : prog.c lenet5.h
 	gcc -c prog.c
 
 clean :
-	rm *.o *exe core
+	rm *.o *exe 
