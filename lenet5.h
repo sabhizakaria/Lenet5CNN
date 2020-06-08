@@ -41,6 +41,8 @@
 /*** output of 3rd convolution layer  ***/
 #define output_3c 1
 
+/*** size of the final output ***/
+
 
 /** function of activation **/
 int relu_func(int x);

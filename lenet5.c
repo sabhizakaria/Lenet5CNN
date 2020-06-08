@@ -350,9 +350,32 @@ void avg_pool_2(int input[nb_filter_conv_2][outputH_2c][outputW_2c],int output_P
 }
 /** TODO
 void conv1_3(int input [nb_layer][outputH_2p][outputW_2p], int kernel [nb_filter_conv_2][kernel_H][kernel_W], 
-	int output [nb_filter_conv_3][output_3c][output_3c]){
+	int output [nb_filter_conv_3]){
 
 
 
 }
+
+
 **/
+static void softmax(int input [nb_filter_conv_3]) {
+    int i;
+    int max;
+    /*** Find maximum value from input array ***/
+    max = input[0];
+    for (i = 1; i < nb_filter_conv_3; i++) {
+        if (input[i] > max) {
+            max = input[i];
+        }
+    }
+
+    double sum = 0;
+    for (i = 0; i < nb_filter_conv_3; i++) {
+        sum += exp(input[i]-max);
+    }
+
+    for (i = 0; i < nb_filter_conv_3; i++) {
+        input[i] = exp(input[i] - max - log(sum));
+
+    }    
+}
