@@ -59,7 +59,7 @@ void avg_pool_1(int input[outputH_1c][outputW_1c],int output_P[nb_filter_pool_1]
 void conv1_2(int input [nb_layer][outputH_1p][outputW_1p], int kernel [nb_filter_conv_2][kernel_H][kernel_W], int output [nb_filter_conv_2][outputH_2c][outputW_2c]);
 
 /** 2st layer of pooling (average) / subsampling**/ 
-void avg_pool_2(int input[outputH_2c][outputW_2c],int output_P[nb_filter_pool_1][outputH_2p][outputW_2p]);
+void avg_pool_2(int input[nb_layer][outputH_2c][outputW_2c],int output_P[nb_filter_pool_2][outputH_2p][outputW_2p]);
 
 /** 3rd convolution layer **/ 
 void conv1_3(int input [nb_layer][outputH_2p][outputW_2p], int kernel [nb_filter_conv_2][kernel_H][kernel_W], int output [nb_filter_conv_3][output_3c][output_3c]);
