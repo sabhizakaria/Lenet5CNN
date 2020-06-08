@@ -1,4 +1,3 @@
-
 #ifndef LENET5_H_
 #define LENET5_H_
 
