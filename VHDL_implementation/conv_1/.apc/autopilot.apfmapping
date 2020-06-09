@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="lenet5.c" path="C:\Users\Zak\Desktop\lenet5\C_implementation\lenet5.c"/>
+  </source>
+  <testbench>
+    <originFiles name="prog.c" path="C:\Users\Zak\Desktop\lenet5\C_implementation\prog.c"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
