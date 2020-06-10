@@ -126,7 +126,8 @@ void conv1_2(int input [nb_layer][outputH_1p][outputW_1p], int kernel [nb_filter
 	int nb_filtre,nb_l,i, j, k, l, res = 0;
 	for (nb_l = 0 ; nb_l < nb_layer ; nb_l++){
 		for (nb_filtre = 0 ; nb_filtre < nb_filter_conv_2; nb_filtre++){
-			for (i = 0 ; i < outputH_2c ; i+=stride){				 
+			for (i = 0 ; i < outputH_2c ; i+=stride){
+				for (j = 0 ; j < outputW_2c ; j+=stride){				 
 					if (nb_filtre == 0) { // (featur map)
 						if (nb_l == 0 || nb_l == 1 ||nb_l == 2 ){ // (nb of Layer)
 							// Get the conv result 
@@ -315,7 +316,7 @@ void conv1_2(int input [nb_layer][outputH_1p][outputW_1p], int kernel [nb_filter
 					output[nb_filtre][i][j] = relu_func(res) ;	
 					res = 0 ;
 
-
+				}
 
 			}
 		}	
@@ -348,21 +349,44 @@ void avg_pool_2(int input[nb_filter_conv_2][outputH_2c][outputW_2c],int output_P
 
 	}
 }
-/** TODO
+
 void conv1_3(int input [nb_layer][outputH_2p][outputW_2p], int kernel [nb_filter_conv_2][kernel_H][kernel_W], 
 	int output [nb_filter_conv_3]){
+	
+	int nb_filtre, nb_l, i, j, k, l, f, res = 0;
+	int index = 0 ;
+	// Each of the 64 units in kernal is connected to all the 400 nodes (16x5x5) of the input  
+	for (nb_l = 0 ; nb_l < nb_layer ; nb_l++){
+		for (nb_filtre = 0 ; nb_filtre < nb_filter_conv_2 ; nb_filtre++ ){
+			for (i = 0 ; i < outputH_2p ; i+=stride){ // index I of input 
+				for(j = 0; j < outputW_2p ;j+=stride) { // index Y of input
+				 // index of the feature map 
+ 					for ( k = 0 ; k < kernel_pH ; k++){ 
+						for ( l = 0 ; l < kernel_pW; l++) {
+							res = res + input[nb_l][k+i][l+j] * kernel[nb_filtre][k][l] ;
+						}
+					}
+				}
+				// applying relu function (as activation function)
+				output[index] = relu_func(res) ;
+				index ++ ;
+				res = 0 ;	
+			}
+				
+		}
 
+	}
 
 
 }
 
 
-**/
 
 /**  Finally, there is a fully connected softmax output layer  
  	 with 10 possible values corresponding to the digits from 0 to 9.
+ 	 N.B ( TODO : Check if the function works correctly (doubts), should it be implemented ? )
 **/
-void softmax(int input [nb_filter_conv_3]) {
+void softmax(int input [nb_filter_conv_3], int output[final_size]) {
     int i;
     int max;
     /*** Find maximum value from input array ***/
@@ -379,7 +403,7 @@ void softmax(int input [nb_filter_conv_3]) {
     }
 
     for (i = 0; i < nb_filter_conv_3; i++) {
-        input[i] = exp(input[i] - max - log(sum));
+        output[i] = exp(input[i] - max - log(sum));
 
     }    
 }
