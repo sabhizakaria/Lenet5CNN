@@ -138,7 +138,7 @@ void conv1_2(int input [nb_layer][outputH_1p][outputW_1p], int kernel [nb_filter
 						}
 					}
 
-					if (nb_filtre == 1) { // (featur map)
+					if (nb_filtre = 1) { // (featur map)
 						if (nb_l == 1 || nb_l == 2 ||nb_l == 3){
 							// Get the conv result 
 							for ( k = 0 ; k < kernel_H ; k++){ // kernel dimention 
@@ -303,7 +303,7 @@ void conv1_2(int input [nb_layer][outputH_1p][outputW_1p], int kernel [nb_filter
 							}
 						}
 					}
-					if (nb_filtre == 15) { // (featur map)
+					if (nb_filtre = 15) { // (featur map)
 						// Get the conv result 
 						for ( k = 0 ; k < kernel_H ; k++){ // kernel dimention 
 							for ( l = 0 ; l < kernel_W; l++) {
@@ -357,6 +357,10 @@ void conv1_3(int input [nb_layer][outputH_2p][outputW_2p], int kernel [nb_filter
 }
 
 
+**/
+
+/**  Finally, there is a fully connected softmax output layer  
+ 	 with 10 possible values corresponding to the digits from 0 to 9.
 **/
 void softmax(int input [nb_filter_conv_3]) {
     int i;
